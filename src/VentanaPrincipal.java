@@ -139,7 +139,15 @@ public class VentanaPrincipal {
 	 * Método que inicializa todos los lísteners que necesita inicialmente el programa
 	 */
 	public void inicializarListeners(){
-		//TODO
+		
+		for (int i = 0; i < botonesJuego.length; i++) {
+			 for (int q = 0; q < botonesJuego.length; q++) {
+				 botonesJuego[i][q].addActionListener(new ActionBoton());
+				
+			}
+			
+		}
+		
 	}
 	
 	
@@ -156,7 +164,28 @@ public class VentanaPrincipal {
 	 * @param j: posición horizontal de la celda.
 	 */
 	public void mostrarNumMinasAlrededor(int i , int j) {
-		//TODO
+		int minas = juego.getMinasAlrededor(i, j);
+		
+		for (int k = 0; k < correspondenciaColores.length; k++) {
+			if (minas==k) {
+					panelesJuego[i][j].removeAll();
+					JTextField numMinas = new JTextField(""+minas);
+					numMinas.setEditable(false);
+					numMinas.setForeground(correspondenciaColores[k]);
+					panelesJuego[i][j].add(numMinas);
+					refrescarPantalla();
+			}else {
+				if(minas>4) {
+					panelesJuego[i][j].removeAll();
+					JTextField numMinas = new JTextField(""+minas);
+					numMinas.setEditable(false);
+					numMinas.setForeground(correspondenciaColores[correspondenciaColores.length-1]);
+					panelesJuego[i][j].add(numMinas);
+					refrescarPantalla();
+				}
+			}
+			
+		}
 	}
 	
 	
@@ -173,7 +202,7 @@ public class VentanaPrincipal {
 	 * Método que muestra la puntuación por pantalla.
 	 */
 	public void actualizarPuntuacion() {
-		//TODO
+		System.out.println(juego.getPuntuacion());
 	}
 	
 	/**
@@ -198,8 +227,10 @@ public class VentanaPrincipal {
 	public void inicializar(){
 		//IMPORTANTE, PRIMERO HACEMOS LA VENTANA VISIBLE Y LUEGO INICIALIZAMOS LOS COMPONENTES.
 		ventana.setVisible(true);
-		inicializarComponentes();	
+		inicializarComponentes();
 		inicializarListeners();		
+		
+		
 	}
 
 
