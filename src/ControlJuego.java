@@ -46,8 +46,9 @@ public class ControlJuego {
 		
 		for (int i = 0; i < tablero.length; i++) {
 			for (int j = 0; j < tablero[i].length; j++) {
-			tablero[i][j] = calculoMinasAdjuntas(i, j);
-				
+				if(tablero[i][j]!= MINA) {
+					tablero[i][j] = calculoMinasAdjuntas(i, j);
+				}
 			}
 		
 		}
@@ -98,9 +99,12 @@ public class ControlJuego {
 			}
 
 		}
-		return numeroMinas;
-
-	}
+		return numeroMinas;	
+		}
+		
+		
+		
+		
 
 	/**
 	 * Método que nos permite
