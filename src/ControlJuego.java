@@ -53,13 +53,7 @@ public class ControlJuego {
 		
 		}
 
-		for (int i = 0; i < tablero.length; i++) {
-			for (int j = 0; j < tablero[i].length; j++) {
-				System.out.print(tablero[i][j] +"          ");
-				
-			}
-			System.out.println("\n");
-		}
+		depurarTablero();
 	}
 
 	public void posicionarMinas(Random rd, int fila, int columna) {
@@ -90,9 +84,9 @@ public class ControlJuego {
 	 **/
 	private int calculoMinasAdjuntas(int i, int j) {
 		int numeroMinas = 0;
-		for (int j2 = Math.max(i - 1, 0); j2 < Math.min(LADO_TABLERO - 1, i + 1); j2++) {
-			for (int k = Math.max(j - 1, 0); k < Math.min(LADO_TABLERO - 1, j + 1); k++) {
-				if (tablero[j2][k] == MINA) {
+		for (int filas = Math.max(i - 1, 0); filas <= Math.min(LADO_TABLERO - 1, i + 1); filas++) {
+			for (int columnas = Math.max(j - 1, 0); columnas <= Math.min(LADO_TABLERO - 1, j + 1); columnas++) {
+				if (tablero[filas][columnas] == MINA) {
 					numeroMinas++;
 				}
 
