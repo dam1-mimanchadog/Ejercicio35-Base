@@ -141,7 +141,7 @@ public class VentanaPrincipal {
 	public void inicializarListeners(){
 		
 		for (int i = 0; i < botonesJuego.length; i++) {
-			 for (int q = 0; q < botonesJuego.length; q++) {
+			 for (int q = 0; q < botonesJuego[i].length; q++) {
 				 botonesJuego[i][q].addActionListener(new ActionBoton());
 				
 			}
@@ -174,15 +174,7 @@ public class VentanaPrincipal {
 					numMinas.setForeground(correspondenciaColores[k]);
 					panelesJuego[i][j].add(numMinas);
 					refrescarPantalla();
-			}else {
-				if(minas>4) {
-					panelesJuego[i][j].removeAll();
-					JTextField numMinas = new JTextField(""+minas);
-					numMinas.setEditable(false);
-					numMinas.setForeground(correspondenciaColores[correspondenciaColores.length-1]);
-					panelesJuego[i][j].add(numMinas);
-					refrescarPantalla();
-				}
+			
 			}
 			
 		}
@@ -195,7 +187,30 @@ public class VentanaPrincipal {
 	 * @post : Todos los botones se desactivan excepto el de volver a iniciar el juego.
 	 */
 	public void mostrarFinJuego(boolean porExplosion) {
-		//TODO
+		
+		if(juego.esFinJuego()) {
+			porExplosion = false;
+		}else{
+			porExplosion = true;
+			
+		}
+		
+		if(porExplosion) {
+			JOptionPane.showMessageDialog(ventana, "¡Has perdido! Tu puntuacion es " + juego.getPuntuacion());
+			for (int i = 0; i < botonesJuego.length; i++) {
+				for (int j = 0; j < botonesJuego[i].length; j++) {
+					botonesJuego[i][j].setEnabled(false);
+				}
+			}
+			
+		}else {
+			JOptionPane.showMessageDialog(ventana, "!Has ganado! Tu puntuacion es " + juego.getPuntuacion() );
+			for (int i = 0; i < botonesJuego.length; i++) {
+				for (int j = 0; j < botonesJuego[i].length; j++) {
+					botonesJuego[i][j].setEnabled(false);
+				}
+			}
+		}
 	}
 
 	/**
