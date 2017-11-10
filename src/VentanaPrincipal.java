@@ -22,7 +22,7 @@ public class VentanaPrincipal {
 	JPanel panelEmpezar;
 	JPanel panelPuntuacion;
 	JPanel panelJuego;
-	
+	VentanaPrincipal thisVentana = this;
 	//Todos los botones se meten en un panel independiente.
 	//Hacemos esto para que podamos cambiar después los componentes por otros
 	JPanel [][] panelesJuego;
@@ -142,7 +142,7 @@ public class VentanaPrincipal {
 		
 		for (int i = 0; i < botonesJuego.length; i++) {
 			 for (int q = 0; q < botonesJuego[i].length; q++) {
-				 botonesJuego[i][q].addActionListener(new ActionBoton());
+				 botonesJuego[i][q].addActionListener(new ActionBoton(thisVentana ,i, q));
 				
 			}
 			

@@ -11,10 +11,15 @@ import java.awt.event.ActionListener;
  */
 public class ActionBoton implements ActionListener{
 
-	
+	VentanaPrincipal ventanaPrincipal;
 
-	public ActionBoton() {
-		//TODO
+	int fila;
+	int columna;
+	
+	public ActionBoton(VentanaPrincipal thisVentana, int i, int j) {
+		this.ventanaPrincipal = thisVentana;
+		this.fila = i;
+		this.columna = j;
 	}
 	
 	/**
@@ -22,7 +27,7 @@ public class ActionBoton implements ActionListener{
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		//TODO
+		ventanaPrincipal.mostrarNumMinasAlrededor(fila, columna);
 	}
 
 }
