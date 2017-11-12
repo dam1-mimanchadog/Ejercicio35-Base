@@ -53,7 +53,6 @@ public class ControlJuego {
 		
 		}
 
-		depurarTablero();
 	}
 
 	public void posicionarMinas(Random rd, int fila, int columna) {

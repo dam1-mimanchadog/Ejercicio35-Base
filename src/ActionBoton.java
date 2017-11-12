@@ -27,7 +27,18 @@ public class ActionBoton implements ActionListener{
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		if(ventanaPrincipal.juego.abrirCasilla(fila, columna) == true) {
 		ventanaPrincipal.mostrarNumMinasAlrededor(fila, columna);
+		ventanaPrincipal.refrescarPantalla();
+		ventanaPrincipal.actualizarPuntuacion();
+		
+		if(ventanaPrincipal.juego.esFinJuego() ==true) {
+			ventanaPrincipal.mostrarFinJuego(false);
+		}
+	}
+		else {
+			ventanaPrincipal.mostrarFinJuego(true);
+		}
 	}
 
 }

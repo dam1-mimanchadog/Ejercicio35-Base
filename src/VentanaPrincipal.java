@@ -148,6 +148,21 @@ public class VentanaPrincipal {
 			
 		}
 		
+		botonEmpezar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				ventana = new JFrame();
+				ventana.setBounds(100, 100, 700, 500);
+				ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				juego = new ControlJuego();
+				inicializar();
+				
+				
+			}
+		});
+		
 	}
 	
 	
@@ -188,13 +203,6 @@ public class VentanaPrincipal {
 	 */
 	public void mostrarFinJuego(boolean porExplosion) {
 		
-		if(juego.esFinJuego()) {
-			porExplosion = false;
-		}else{
-			porExplosion = true;
-			
-		}
-		
 		if(porExplosion) {
 			JOptionPane.showMessageDialog(ventana, "�Has perdido! Tu puntuacion es " + juego.getPuntuacion());
 			for (int i = 0; i < botonesJuego.length; i++) {
@@ -217,7 +225,8 @@ public class VentanaPrincipal {
 	 * Método que muestra la puntuación por pantalla.
 	 */
 	public void actualizarPuntuacion() {
-		System.out.println(juego.getPuntuacion());
+
+		pantallaPuntuacion.setText(Integer.toString(juego.getPuntuacion()));
 	}
 	
 	/**
